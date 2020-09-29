@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RemoteDoor.label>remote door</RemoteDoor.label>
+  <RemoteDoor.description>Divides rooms. Can be activated only by a remote controller.</RemoteDoor.description>
+  <RemoteDoor_Blueprint.label>remote door (blueprint)</RemoteDoor_Blueprint.label>
+  <RemoteDoor_Frame.label>remote door (building)</RemoteDoor_Frame.label>
+  <RemoteDoor_Frame.description>Divides rooms. Can be activated only by a remote controller.</RemoteDoor_Frame.description>
+
+
+</LanguageData>
