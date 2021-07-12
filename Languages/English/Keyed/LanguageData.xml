@@ -7,5 +7,4 @@
   <RD_Controller_Gizmo_Activate_Desc>Activate an remote object</RD_Controller_Gizmo_Activate_Desc>
   <RD_Door_NotPowered>Door is not powered</RD_Door_NotPowered>
   <RD_Door_Blocked>Can't close the door because it is blocked momentary!</RD_Door_Blocked>
-
 </LanguageData>
