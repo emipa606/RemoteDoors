@@ -1,91 +1,77 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
-namespace RemoteDoors
+namespace RemoteDoors;
+
+internal class Building_RemoteEmbrasure : Building, IRemoteTargetable
 {
-    // Token: 0x02000002 RID: 2
-    internal class Building_RemoteEmbrasure : Building, IRemoteTargetable
+    private bool openInt;
+
+    public bool OpenInt => openInt;
+
+    private bool IsPowered
     {
-        // Token: 0x04000001 RID: 1
-        private bool openInt;
-
-        // Token: 0x17000001 RID: 1
-        // (get) Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
-        public bool OpenInt => openInt;
-
-        // Token: 0x17000002 RID: 2
-        // (get) Token: 0x06000002 RID: 2 RVA: 0x00002058 File Offset: 0x00000258
-        private bool IsPowered
+        get
         {
-            get
-            {
-                var comp = GetComp<CompPowerTrader>();
-                return comp != null && comp.PowerOn;
-            }
+            var comp = GetComp<CompPowerTrader>();
+            return comp is { PowerOn: true };
+        }
+    }
+
+    public void Action()
+    {
+        ChangeState();
+    }
+
+    public override void ExposeData()
+    {
+        base.ExposeData();
+        Scribe_Values.Look(ref openInt, "open", true);
+    }
+
+    public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+    {
+        def = ThingDefOf.RemoteEmbrasure_Close;
+        base.Destroy(mode);
+    }
+
+    private void RefreshGraphic()
+    {
+        var fieldInfo = AccessTools.Field(typeof(Thing), "graphicInt");
+        fieldInfo.SetValue(this, null);
+        _ = DefaultGraphic;
+    }
+
+    private void CloseEmbrasure()
+    {
+        openInt = false;
+        def = ThingDefOf.RemoteEmbrasure_Close;
+    }
+
+    private void OpenEmbrasure()
+    {
+        openInt = true;
+        def = ThingDefOf.RemoteEmbrasure_Open;
+    }
+
+    private void ChangeState()
+    {
+        if (!IsPowered)
+        {
+            return;
         }
 
-        // Token: 0x06000005 RID: 5 RVA: 0x000020B7 File Offset: 0x000002B7
-        public void Action()
+        if (openInt)
         {
-            ChangeState();
+            CloseEmbrasure();
+        }
+        else
+        {
+            OpenEmbrasure();
         }
 
-        // Token: 0x06000003 RID: 3 RVA: 0x00002084 File Offset: 0x00000284
-        public override void ExposeData()
-        {
-            base.ExposeData();
-            Scribe_Values.Look(ref openInt, "open", true);
-        }
-
-        // Token: 0x06000004 RID: 4 RVA: 0x000020A1 File Offset: 0x000002A1
-        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
-        {
-            def = ThingDefOf.RemoteEmbrasure_Close;
-            base.Destroy(mode);
-        }
-
-        // Token: 0x06000006 RID: 6 RVA: 0x000020C4 File Offset: 0x000002C4
-        private void RefreshGraphic()
-        {
-            var fieldInfo = AccessTools.Field(typeof(Thing), "graphicInt");
-            fieldInfo.SetValue(this, null);
-            _ = DefaultGraphic;
-        }
-
-        // Token: 0x06000007 RID: 7 RVA: 0x000020F7 File Offset: 0x000002F7
-        private void CloseEmbrasure()
-        {
-            openInt = false;
-            def = ThingDefOf.RemoteEmbrasure_Close;
-        }
-
-        // Token: 0x06000008 RID: 8 RVA: 0x0000210C File Offset: 0x0000030C
-        private void OpenEmbrasure()
-        {
-            openInt = true;
-            def = ThingDefOf.RemoteEmbrasure_Open;
-        }
-
-        // Token: 0x06000009 RID: 9 RVA: 0x00002124 File Offset: 0x00000324
-        private void ChangeState()
-        {
-            if (!IsPowered)
-            {
-                return;
-            }
-
-            if (openInt)
-            {
-                CloseEmbrasure();
-            }
-            else
-            {
-                OpenEmbrasure();
-            }
-
-            RefreshGraphic();
-            DirtyMapMesh(Map);
-        }
+        RefreshGraphic();
+        DirtyMapMesh(Map);
     }
 }
