@@ -5,6 +5,8 @@
 Update of TGPArchers mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1969368164
 
+- Added a remote power-switch
+
 ![Image](https://i.imgur.com/pufA0kM.png)
 
 	
@@ -36,6 +38,7 @@ This mod adds remote technologies such as:
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
+
 
 
 
