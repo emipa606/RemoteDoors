@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>RemotePowerSwitch</defName>
+    <label>remote power switch</label>
+    <description>Switches power on/off remotely.</description>
+    <thingClass>RemoteDoors.Building_RemotePowerSwitch</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Buildings/RemotePowerSwitch</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <allowWireConnection>false</allowWireConnection>
+    </building>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Standable</passability>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <statBases>
+      <MaxHitPoints>160</MaxHitPoints>
+      <WorkToBuild>400</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-2</Beauty>
+    </statBases>
+    <placingDraggableDimensions>0</placingDraggableDimensions>
+    <costList>
+      <Steel>15</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTransmitter</compClass>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Flickable" />
+    </comps>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>false</neverMultiSelect>
+    <tickerType>Normal</tickerType>
+    <designationCategory>Power</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>Autodoors</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+  </ThingDef>
+</Defs>
