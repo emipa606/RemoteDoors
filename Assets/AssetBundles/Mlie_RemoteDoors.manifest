@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 904198978
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6e1898d9d1cf7c0c584388d8e25c0f31
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 6e1898d9d1cf7c0c584388d8e25c0f31
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteDoor_MenuIcon.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemotePowerSwitch.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteEmbrasure_Close/RemoteEmbrasure_Atlas_Planks.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemotePowerSwitch_Off.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteEmbrasure_Open/RemoteEmbrasure_Atlas_Planks.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteEmbrasure_MenuIcon/RemoteEmbrasureBricks_MenuIcon.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteEmbrasure_Close/RemoteEmbrasure_Atlas_Smooth.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteEmbrasure_Open/RemoteEmbrasure_Atlas_Smooth.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteDoor_Mover.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteEmbrasure_MenuIcon/RemoteEmbrasurePlanks_MenuIcon.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteEmbrasure_Open/RemoteEmbrasure_Atlas_Bricks.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteEmbrasure_MenuIcon/RemoteEmbrasureSmooth_MenuIcon.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteController_east.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteController_south.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteController_north.png
+- Assets/Data/Mlie.RemoteDoors/Textures/Things/Buildings/RemoteEmbrasure_Close/RemoteEmbrasure_Atlas_Bricks.png
+Dependencies: []

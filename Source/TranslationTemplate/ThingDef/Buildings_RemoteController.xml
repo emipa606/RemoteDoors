@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: remote controller -->
+  <RemoteController.label>remote controller</RemoteController.label>
+  <!-- EN: An controller capable of accesing remote devices. -->
+  <RemoteController.description>An controller capable of accesing remote devices.</RemoteController.description>
+</LanguageData>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: remote embrasure -->
+  <RemoteEmbrasure_Close.label>remote embrasure</RemoteEmbrasure_Close.label>
+  <!-- EN: A special type of wall which has an remote accesible mechanism which when activated an opening in the wall appears allowing you to shoot and throw granades. -->
+  <RemoteEmbrasure_Close.description>A special type of wall which has an remote accesible mechanism which when activated an opening in the wall appears allowing you to shoot and throw granades.</RemoteEmbrasure_Close.description>
+  <!-- EN: remote embrasure -->
+  <RemoteEmbrasure_Open.label>remote embrasure</RemoteEmbrasure_Open.label>
+  <!-- EN: A special type of wall which has an remote accesible mechanism which when activated an opening in the wall appears allowing you to shoot and throw granades. -->
+  <RemoteEmbrasure_Open.description>A special type of wall which has an remote accesible mechanism which when activated an opening in the wall appears allowing you to shoot and throw granades.</RemoteEmbrasure_Open.description>
+</LanguageData>

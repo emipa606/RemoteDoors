@@ -21,7 +21,7 @@ internal class Building_RemoteEmbrasure : Building, IRemoteTargetable
 
     public void Action()
     {
-        ChangeState();
+        changeState();
     }
 
     public override void ExposeData()
@@ -36,26 +36,26 @@ internal class Building_RemoteEmbrasure : Building, IRemoteTargetable
         base.Destroy(mode);
     }
 
-    private void RefreshGraphic()
+    private void refreshGraphic()
     {
         var fieldInfo = AccessTools.Field(typeof(Thing), "graphicInt");
         fieldInfo.SetValue(this, null);
         _ = DefaultGraphic;
     }
 
-    private void CloseEmbrasure()
+    private void closeEmbrasure()
     {
         openInt = false;
         def = ThingDefOf.RemoteEmbrasure_Close;
     }
 
-    private void OpenEmbrasure()
+    private void openEmbrasure()
     {
         openInt = true;
         def = ThingDefOf.RemoteEmbrasure_Open;
     }
 
-    private void ChangeState()
+    private void changeState()
     {
         if (!IsPowered)
         {
@@ -64,14 +64,14 @@ internal class Building_RemoteEmbrasure : Building, IRemoteTargetable
 
         if (openInt)
         {
-            CloseEmbrasure();
+            closeEmbrasure();
         }
         else
         {
-            OpenEmbrasure();
+            openEmbrasure();
         }
 
-        RefreshGraphic();
+        refreshGraphic();
         DirtyMapMesh(Map);
     }
 }

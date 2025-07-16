@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: remote door -->
+  <RemoteDoor.label>remote door</RemoteDoor.label>
+  <!-- EN: Divides rooms. Can be activated only by a remote controller. -->
+  <RemoteDoor.description>Divides rooms. Can be activated only by a remote controller.</RemoteDoor.description>
+</LanguageData>

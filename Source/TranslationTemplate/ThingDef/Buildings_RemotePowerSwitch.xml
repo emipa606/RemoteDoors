@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: remote power switch -->
+  <RemotePowerSwitch.label>remote power switch</RemotePowerSwitch.label>
+  <!-- EN: Switches power on/off remotely. -->
+  <RemotePowerSwitch.description>Switches power on/off remotely.</RemotePowerSwitch.description>
+</LanguageData>

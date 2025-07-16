@@ -10,7 +10,7 @@ public class Building_RemoteDoor : Building_Door, IRemoteTargetable
 {
     public void Action()
     {
-        ActionDoor();
+        actionDoor();
     }
 
     public override IEnumerable<Gizmo> GetGizmos()
@@ -33,7 +33,7 @@ public class Building_RemoteDoor : Building_Door, IRemoteTargetable
         return !Open;
     }
 
-    private void ActionDoor()
+    private void actionDoor()
     {
         if (!DoorPowerOn)
         {

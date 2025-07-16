@@ -2,5 +2,17 @@
   "Continued": true,
   "CanAdd": "0",
   "CanRemove": "2",
-  "PreviewVersion": "1.5"
+  "PreviewVersion": "1.6",
+  "Patches": false,
+  "Defs": true,
+  "Assemblies": true,
+  "LinesOfCode": 6940,
+  "LinesOfXML": 11559,
+  "CodeBaseSize": 68,
+  "LastXmlCleaning": "2025-07-16T20:17:58.9214366+02:00",
+  "SocialImageSet": true,
+  "SearchTags": [
+    " doors",
+    " controls"
+  ]
 }
