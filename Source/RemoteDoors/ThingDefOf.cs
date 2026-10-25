@@ -4,7 +4,7 @@ using Verse;
 namespace RemoteDoors;
 
 [DefOf]
-internal class ThingDefOf
+internal static class ThingDefOf
 {
     public static ThingDef RemoteEmbrasure_Close;
 

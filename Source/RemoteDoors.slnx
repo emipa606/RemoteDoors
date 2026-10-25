@@ -6,4 +6,16 @@
     <BuildType Name="Release" />
   </Configurations>
   <Project Path="RemoteDoors/RemoteDoors.csproj" />
+  <Folder Name="/XML/Languages/English/Keyed/">
+    <File Path="../Languages/English/Keyed/LanguageData.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/ThingDefs/">
+    <File Path="../1.7/Defs/ThingDefs/Buildings_RemoteController.xml" />
+    <File Path="../1.7/Defs/ThingDefs/Buildings_RemoteDoors.xml" />
+    <File Path="../1.7/Defs/ThingDefs/Buildings_RemoteEmbrasure.xml" />
+    <File Path="../1.7/Defs/ThingDefs/Buildings_RemotePowerSwitch.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
 </Solution>

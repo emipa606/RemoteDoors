@@ -1,70 +1,124 @@
-# GitHub Copilot Instructions for RimWorld Remote Doors Mod
+# GitHub Copilot Instructions for Remote Doors (Continued) Mod
 
 ## Mod Overview and Purpose
 
-The Remote Doors mod enhances the RimWorld experience by introducing remotely operable structures to the game. This mod aims to provide players with increased control over their base’s security and functionality by allowing them to manage doors, embrasures, and power switches remotely. The ability to control these elements from a distance allows for strategic planning and reactive measures to sudden threats, significantly improving game dynamics.
+Remote Doors (Continued) is a RimWorld mod that builds upon the original TGPArchers mod by adding remote technologies. The primary purpose of this mod is to introduce new interactive building types that can be controlled remotely, enhancing the gameplay experience by allowing players to manage structures from afar.
 
 ## Key Features and Systems
 
-1. **Remote Operable Doors:**
-   - The mod introduces `Building_RemoteDoor`, which can be opened and closed from a distance, providing flexible control over base access and security.
+### Remote Controller
+- **Section**: Misc
+- **Research Required**: Electricity
+- **Description**: A controller that can access and activate other remote objects.
 
-2. **Remote Embrasures:**
-   - The mod offers `Building_RemoteEmbrasure`, which can be opened or closed remotely to allow or prevent shooting through them. This feature is crucial during raids or defensive maneuvers.
+### Remote Door
+- **Section**: Structures
+- **Research Required**: Autodoors
+- **Description**: A door that can only be opened or closed using the Remote Controller.
 
-3. **Remote Power Switches:**
-   - The inclusion of `Building_RemotePowerSwitch` allows players to control power distributions in their base remotely, adding a strategic layer to power management.
+### Remote Embrasure
+- **Section**: Structures
+- **Research Required**: Autodoors
+- **Description**: A wall with an embrasure that defaults to a closed state. When activated by the Remote Controller, it opens to allow shooting through.
+
+### Remote Power Switch
+- **Description**: A switch that controls the power state of remote objects.
 
 ## Coding Patterns and Conventions
 
-- **Naming Conventions:**
-  - Classes are named using PascalCase (e.g., `Building_RemoteController`), indicating their function or role in the mod.
+### File Structure
+- **C# Files**: Located in the `Source\RemoteDoors` directory.
+- **XML Files**: Located in the `1.7\Defs\ThingDefs` directory.
 
-- **Accessibility:**
-  - Internal classes (`internal class`) are used where extended access is unnecessary, maintaining encapsulation within the mod components.
+### Naming Conventions
+- **Classes**: Use PascalCase (e.g., `Building_RemoteDoor`).
+- **Methods**: Use camelCase (e.g., `getGizmos`).
+- **Variables**: Use camelCase (e.g., `isManned`).
 
-- **Method Structure:**
-  - Methods are prefixed with appropriate access modifiers (e.g., `private`, `public`) and named to reflect their actions, such as `ActivateRemote`, `OpenEmbrasure`, and `ChangeState`.
+### Code Comments
+- Use XML comments for methods and properties to provide documentation.
+- Use inline comments for complex logic or temporary code.
 
 ## XML Integration
 
-While the provided summary does not explicitly mention XML files, they are typically used in RimWorld modding for defining game objects and properties. The following are common practices:
+The mod integrates with RimWorld's XML system to define new building types. The following XML files are used:
 
-- **Defining Objects:**
-  - XML is used to define new buildings, items, and pawns, and link them with C# backend functionality.
-  
-- **Property Configuration:**
-  - Use XML to specify properties like health, costs, and descriptions for the remote-controllable structures. 
+- `Buildings_RemoteController.xml`
+- `Buildings_RemoteDoors.xml`
+- `Buildings_RemoteEmbrasure.xml`
+- `Buildings_RemotePowerSwitch.xml`
+
+Each XML file defines a `ThingDef` for a specific building type, including properties such as `defName`, `label`, `description`, and `researchPrereq`.
 
 ## Harmony Patching
 
-- **Introduction to Harmony:**
-  - Harmony is a library used to patch or alter existing game methods in RimWorld. This mod likely uses Harmony to integrate new behaviors without modifying core game files.
+The mod uses Harmony, a popular modding library for RimWorld, to patch existing game functionality. Key Harmony patches include:
 
-- **Common Use Cases:**
-  - Patch methods of the base `Building` and `Building_Door` classes to introduce remote control functionalities.
-  - Utilize Harmony's `Prefix` and `Postfix` patches to adjust behavior before or after the original method execution.
+- **Building_RemoteDoor**: Patches methods to handle remote activation.
+- **Building_RemoteController**: Patches methods to manage remote targets.
+- **Building_RemoteEmbrasure**: Patches methods to handle embrasure state changes.
+- **Building_RemotePowerSwitch**: Patches methods to control power state.
+
+### Harmony Patch Example
+
+csharp
+using HarmonyLib;
+using RimWorld;
+using Verse;
+
+namespace RemoteDoors.Patches
+{
+    [HarmonyPatch(typeof(Thing), nameof(Thing.SpawnSetup))]
+    public static class Thing_SpawnSetup_Patch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(Thing __instance)
+        {
+            if (__instance is Building_RemoteDoor remoteDoor)
+            {
+                remoteDoor.InitializeRemoteControl();
+            }
+        }
+    }
+}
+
 
 ## Suggestions for Copilot
 
-1. **Class Expansion:**
-   - Implement interface methods in `IRemoteTargetable` where needed, as currently, it is an incomplete interface.
+### General Suggestions
+- **Documentation**: Ensure that all methods and classes are well-documented using XML comments.
+- **Testing**: Write unit tests for new features and patches.
+- **Code Reviews**: Regularly review code to maintain quality and consistency.
 
-2. **Error Handling:**
-   - Incorporate error handling for edge cases such as unmanned controllers or targets outside operational range in `Building_RemoteController`.
+### C# File Suggestions
+- **Building_RemoteDoor.cs**: Focus on methods related to door activation and interaction.
+- **Building_RemoteController.cs**: Focus on methods related to remote target management.
+- **Building_RemoteEmbrasure.cs**: Focus on methods related to embrasure state changes.
+- **Building_RemotePowerSwitch.cs**: Focus on methods related to power state control.
+- **IRemoteTargetable.cs**: Focus on defining the remote targetable interface.
 
-3. **Code Optimization:**
-   - Suggest optimizations for methods dealing with range checking (`InRange`) and user interface updates for remote interactions.
+### XML File Suggestions
+- **Buildings_RemoteController.xml**: Focus on defining the Remote Controller's properties and behavior.
+- **Buildings_RemoteDoors.xml**: Focus on defining the Remote Door's properties and behavior.
+- **Buildings_RemoteEmbrasure.xml**: Focus on defining the Remote Embrasure's properties and behavior.
+- **Buildings_RemotePowerSwitch.xml**: Focus on defining the Remote Power Switch's properties and behavior.
 
-4. **Test Functions:**
-   - Write unit tests and in-game tests for each remote action to ensure they work as intended under different scenarios, using RimWorld's debug tools.
+## Conclusion
 
-5. **Documentation:**
-   - Assist in generating XML documentation for C# methods to improve code readability and maintainability.
+Remote Doors (Continued) is a comprehensive mod that enhances the gameplay experience by introducing new remote-controlled building types. By following the coding patterns and conventions outlined above, and utilizing Harmony for patching, developers can ensure a smooth and efficient development process. Contributions are welcome, so feel free to contribute to the mod's ongoing development!
 
-6. **Code Review:**
-   - Identify potential refactoring opportunities to adhere better to the Single Responsibility Principle.
+## Project Solution Guidelines
+- Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
+- Use these in-solution XML files as the primary files for reference and modification.
+- The `.github/copilot-instructions.md` file is included in the solution under the `.github` solution folder, so it should be read/modified from within the solution instead of using paths outside the solution. Update this file once only, as it and the parent-path solution reference point to the same file in this workspace.
+- When making functional changes in this mod, ensure the documented features stay in sync with implementation; use the in-solution `.github` copy as the primary file.
+- In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
+- For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.
 
----
 
-This comprehensive guide should assist developers working on the Remote Doors mod to use GitHub Copilot effectively, enhancing their productivity and ensuring mod quality.
+## Hard rules (must follow)
+- Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
+- Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+- When mentioning SonarQube issues, automatically use the SonarQube MCP service to fetch and address issues instead of making inferred fixes without querying SonarQube first.
+- When mentioning the rimworld log, automatically use the Rimworld MCP service to fetch the log.
+
